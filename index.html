@@ -250,6 +250,39 @@
     .badge-birthday  { background: #fce4ec; color: #b5365a; }
 
     /* ── DAY TRIPS ── */
+    /* ── ROOMS ── */
+    .floor {
+      margin-bottom: 1.8rem;
+    }
+    .floor-label {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--warm-white); background: var(--green-light);
+      display: inline-block; padding: 0.25rem 0.8rem;
+      border-radius: 100px; margin-bottom: 0.8rem;
+    }
+    .rooms-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    .room-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.9rem 1rem;
+    }
+    .room-card-name {
+      font-size: 0.95rem; margin-bottom: 0.35rem; color: var(--green);
+    }
+    .room-card-desc {
+      font-family: 'Arial', sans-serif; font-size: 0.8rem;
+      color: var(--text-muted); line-height: 1.5;
+    }
+    .room-badge {
+      display: inline-block; font-family: 'Arial', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.15rem 0.5rem; border-radius: 100px;
+      margin-top: 0.4rem; background: #edf7ed; color: var(--green);
+    }
+
     .trips-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 1rem;
@@ -376,6 +409,7 @@
     <li><a href="#property">Property</a></li>
     <li><a href="#arrivals">Arrivals</a></li>
     <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#rooms">Rooms</a></li>
     <li><a href="#daytrips">Day Trips</a></li>
     <li><a href="#shopping">Shopping</a></li>
   </ul>
@@ -666,6 +700,120 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section id="rooms">
+    <h2 class="section-title">The House</h2>
+
+    <div class="floor">
+      <span class="floor-label">Ground Floor</span>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <div class="room-card-name">Lounge</div>
+          <div class="room-card-desc">Sofas, coffee &amp; side tables. Patio doors onto the garden.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Morning Room</div>
+          <div class="room-card-desc">Sofas, TV, radio. Good for a quiet morning.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Dining Room</div>
+          <div class="room-card-desc">Seats 12 — the whole family around one table.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Courtyard Room</div>
+          <div class="room-card-desc">Chaise-lounge &amp; courtyard access. Secret kitchen hidden behind bookcases — fridge, coffee maker, kettle, ovens, dishwasher.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor">
+      <span class="floor-label">Basement</span>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <div class="room-card-name">Kitchen</div>
+          <div class="room-card-desc">Aga oven, fridges, freezers, dishwasher, kettle, toaster, coffee maker, microwave, air fryer.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Pantry</div>
+          <div class="room-card-desc">Adjoins the kitchen. Additional oven, dishwasher and storage.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Cinema</div>
+          <div class="room-card-desc">Private 12-seat cinema room.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor">
+      <span class="floor-label">First Floor</span>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <div class="room-card-name">Harrington Room</div>
+          <div class="room-card-desc">En suite shower &amp; toilet.</div>
+          <span class="room-badge">En suite</span>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Blanchard Room</div>
+          <div class="room-card-desc">En suite toilet.</div>
+          <span class="room-badge">En suite</span>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Walters Room</div>
+          <div class="room-card-desc">Double bed. Hidden sink. Shares the floor bathroom.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Shared Bathroom</div>
+          <div class="room-card-desc">Full bath. Shared between first-floor rooms.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor">
+      <span class="floor-label">Second Floor</span>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <div class="room-card-name">Trecenan Room</div>
+          <div class="room-card-desc">King-size bed. En suite bathroom with bath &amp; shower.</div>
+          <span class="room-badge">En suite</span>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Pagden Room</div>
+          <div class="room-card-desc">King-size bed. Shares the floor bathroom.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Marsh Room</div>
+          <div class="room-card-desc">King-size bed. Shares the floor bathroom.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Shared Bathroom</div>
+          <div class="room-card-desc">Bath with shower attachment. Shared between Pagden &amp; Marsh rooms.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="floor">
+      <span class="floor-label">Outside</span>
+      <div class="rooms-grid">
+        <div class="room-card">
+          <div class="room-card-name">Patio &amp; Hot Tub</div>
+          <div class="room-card-desc">Outside tables &amp; seating for 12. Hot tub.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">River Lawn</div>
+          <div class="room-card-desc">Lawn leading directly to the River Avon.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Orangery</div>
+          <div class="room-card-desc">Additional garden furniture &amp; games.</div>
+        </div>
+        <div class="room-card">
+          <div class="room-card-name">Coach House</div>
+          <div class="room-card-desc">Parking. Courtyard access.</div>
+        </div>
+      </div>
     </div>
   </section>
 
