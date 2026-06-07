@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bradley Family — Bath 2026</title>
+  <style>
+    :root {
+      --cream: #faf7f2;
+      --warm-white: #ffffff;
+      --green: #3a5a40;
+      --green-light: #588157;
+      --green-muted: #a3b18a;
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --text: #2d2d2d;
+      --text-muted: #6b6b6b;
+      --border: #e0d8cc;
+      --confirmed: #3a5a40;
+      --tbc: #8a6d3b;
+      --radius: 12px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--green); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    nav ul {
+      display: flex; gap: 0; list-style: none;
+      max-width: 960px; margin: 0 auto;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    nav ul::-webkit-scrollbar { display: none; }
+    nav li a {
+      display: block; padding: 1rem 1.1rem;
+      font-family: 'Georgia', serif; font-size: 0.82rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      white-space: nowrap; border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav li a:hover { color: var(--green); border-color: var(--green); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; overflow: hidden;
+      min-height: 480px; display: flex; align-items: flex-end;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.promotemyplace.com/Uploads/Property/7299/House_Night_1.jpg?width=1200&height=750&grow=1&scale=both&mode=max&quality=85&v=20250826175107');
+      background-size: cover; background-position: center;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,35,20,0.82) 0%, rgba(20,35,20,0.3) 60%, rgba(20,35,20,0.1) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      padding: 3rem 2rem 2.5rem;
+      max-width: 960px; margin: 0 auto; width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: 'Georgia', serif; font-size: 0.8rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: normal; color: #fff;
+      line-height: 1.15; margin-bottom: 0.5rem;
+    }
+    .hero-sub {
+      color: rgba(255,255,255,0.8); font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
+    .countdown {
+      display: inline-flex; gap: 1.5rem;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--radius); padding: 0.9rem 1.4rem;
+    }
+    .countdown-unit { text-align: center; }
+    .countdown-num {
+      display: block; font-size: 1.8rem; font-weight: bold;
+      color: #fff; line-height: 1;
+    }
+    .countdown-label {
+      font-size: 0.65rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.65);
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* ── LAYOUT ── */
+    main { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+    section { margin-top: 3.5rem; }
+    .section-title {
+      font-size: 1.4rem; font-weight: normal;
+      color: var(--green); border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem; margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── PROPERTY PHOTOS ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 200px 200px;
+      gap: 8px; border-radius: var(--radius); overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    .photo-grid img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .photo-grid img:first-child { grid-row: 1 / 3; }
+
+    /* ── PROPERTY INFO CARDS ── */
+    .info-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .info-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+    }
+    .info-card-label {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.35rem;
+    }
+    .info-card-value { font-size: 1rem; color: var(--text); }
+    .info-card a { text-decoration: none; }
+    .info-card a:hover { text-decoration: underline; }
+
+    .highlights {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;
+    }
+    .highlight-pill {
+      background: var(--green); color: #fff;
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      padding: 0.3rem 0.8rem; border-radius: 100px;
+    }
+
+    /* ── MAP ── */
+    .map-frame {
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border); margin-top: 1rem;
+    }
+    .map-frame iframe { display: block; width: 100%; height: 280px; border: none; }
+
+    .getting-there {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem; margin-top: 1rem;
+    }
+    .travel-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.9rem 1rem;
+      font-family: 'Arial', sans-serif;
+    }
+    .travel-card-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .travel-card-title { font-size: 0.8rem; font-weight: bold; color: var(--text); }
+    .travel-card-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    /* ── ARRIVALS ── */
+    .arrivals-table-wrap { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      background: var(--warm-white); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow);
+    }
+    th {
+      background: var(--green); color: #fff;
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.85rem 1rem; text-align: left; font-weight: normal;
+    }
+    td {
+      padding: 0.85rem 1rem; border-bottom: 1px solid var(--border);
+      font-size: 0.95rem; vertical-align: middle;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f5f2ed; }
+    .mode-badge {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      padding: 0.2rem 0.6rem; border-radius: 100px;
+    }
+    .mode-plane { background: #e8f4fd; color: #1a6a9a; }
+    .mode-car   { background: #edf7ed; color: #2e6b2e; }
+    .arrive-time { font-weight: bold; color: var(--green); }
+
+    /* ── SCHEDULE ── */
+    .days { display: flex; flex-direction: column; gap: 1.5rem; }
+    .day-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .day-header {
+      background: var(--green); color: #fff;
+      padding: 0.9rem 1.3rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .day-name { font-size: 1.05rem; }
+    .day-date {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      opacity: 0.8; letter-spacing: 0.05em;
+    }
+    .day-events { padding: 0.5rem 0; }
+    .event {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 0.7rem 1.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .event:last-child { border-bottom: none; }
+    .event-time {
+      font-family: 'Arial', sans-serif; font-size: 0.8rem;
+      color: var(--text-muted); min-width: 80px; padding-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    .event-body { flex: 1; }
+    .event-title { font-size: 0.97rem; color: var(--text); }
+    .event-note {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: var(--text-muted); margin-top: 0.15rem;
+    }
+    .badge {
+      display: inline-block; font-family: 'Arial', sans-serif;
+      font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.15rem 0.55rem; border-radius: 100px; margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .badge-confirmed { background: #d4edda; color: var(--confirmed); }
+    .badge-tbc       { background: #fff3cd; color: var(--tbc); }
+    .badge-birthday  { background: #fce4ec; color: #b5365a; }
+
+    /* ── DAY TRIPS ── */
+    .trips-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .trip-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .trip-card-title { font-size: 1rem; margin-bottom: 0.35rem; }
+    .trip-card-desc {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      color: var(--text-muted); line-height: 1.5;
+    }
+    .trip-status {
+      display: inline-block; margin-top: 0.6rem;
+      font-family: 'Arial', sans-serif; font-size: 0.68rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 100px;
+      background: #fff3cd; color: var(--tbc);
+    }
+
+    /* ── SHOPPING LIST ── */
+    .shop-status {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      color: var(--text-muted); margin-bottom: 1rem;
+    }
+    .shop-status.error { color: #c0392b; }
+    .shop-categories { display: flex; flex-direction: column; gap: 1.5rem; }
+    .shop-category-title {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.6rem;
+      padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
+    }
+    .shop-items { display: flex; flex-direction: column; gap: 0.4rem; }
+    .shop-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.55rem 0.9rem;
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: 8px; transition: background 0.15s;
+    }
+    .shop-item.checked { background: #f0f4f0; }
+    .shop-item.checked .shop-item-name {
+      text-decoration: line-through; color: var(--text-muted);
+    }
+    .shop-item input[type="checkbox"] {
+      width: 17px; height: 17px; cursor: pointer;
+      accent-color: var(--green); flex-shrink: 0;
+    }
+    .shop-item-name { flex: 1; font-size: 0.95rem; }
+    .shop-item-qty {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .shop-item-del {
+      background: none; border: none; cursor: pointer;
+      color: #ccc; font-size: 1.1rem; line-height: 1;
+      padding: 0 0.2rem; transition: color 0.2s;
+    }
+    .shop-item-del:hover { color: #c0392b; }
+    .add-item-form {
+      display: flex; gap: 0.5rem; margin-top: 1rem;
+    }
+    .add-item-form input, .add-item-form select {
+      flex: 1; padding: 0.6rem 0.9rem;
+      border: 1px solid var(--border); border-radius: 8px;
+      font-size: 0.9rem; font-family: 'Georgia', serif;
+      background: var(--warm-white); color: var(--text);
+    }
+    .add-item-form select { flex: 0 0 140px; }
+    .btn-add {
+      padding: 0.6rem 1.2rem;
+      background: var(--green); color: #fff;
+      border: none; border-radius: 8px;
+      font-size: 0.9rem; cursor: pointer;
+      font-family: 'Georgia', serif; transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .btn-add:hover { background: var(--green-light); }
+    .shop-sheet-link {
+      display: inline-block; margin-top: 0.75rem;
+      font-family: 'Arial', sans-serif; font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .setup-notice {
+      background: #fff8e8; border: 1px solid var(--gold-light);
+      border-radius: var(--radius); padding: 1rem 1.2rem;
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      color: #6b5a2a; line-height: 1.6;
+    }
+    .setup-notice code {
+      background: rgba(0,0,0,0.06); padding: 0.1em 0.4em;
+      border-radius: 4px; font-size: 0.85em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem 1.5rem;
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: var(--text-muted); border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .photo-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 140px 140px;
+      }
+      .photo-grid img:first-child { grid-row: auto; }
+      .hero-content { padding: 2rem 1.2rem 1.8rem; }
+      .countdown { gap: 1rem; padding: 0.7rem 1rem; }
+      .countdown-num { font-size: 1.4rem; }
+      .add-item-form { flex-wrap: wrap; }
+      .add-item-form select { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="#property">Property</a></li>
+    <li><a href="#arrivals">Arrivals</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#daytrips">Day Trips</a></li>
+    <li><a href="#shopping">Shopping</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Bradley Family Reunion &amp; 30th Birthday</p>
+    <h1>Batheaston House<br>Bath, July 2026</h1>
+    <p class="hero-sub">16–20 July &nbsp;·&nbsp; 8 adults, 1 child, 2 toddlers &nbsp;·&nbsp; 4 nights</p>
+    <div class="countdown" id="countdown">
+      <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">Mins</span></div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- PROPERTY -->
+  <section id="property">
+    <h2 class="section-title">The Property</h2>
+
+    <div class="photo-grid">
+      <img src="https://images.promotemyplace.com/Uploads/Property/7299/Garden_copy.jpg?width=1200&height=750&grow=1&scale=both&mode=max&quality=85&v=20250826171012" alt="Batheaston House garden" loading="lazy" />
+      <img src="https://images.promotemyplace.com/Uploads/Property/7299/Patio_1_copy.jpg?width=1200&height=750&grow=1&scale=both&mode=max&quality=85&v=20250826171022" alt="Batheaston House patio" loading="lazy" />
+      <img src="https://images.promotemyplace.com/Uploads/Property/7299/HeaderImage_cropped.jpg?width=1170&height=0&grow=1&scale=both&mode=max&quality=85&v=20250826181157" alt="Batheaston House exterior" loading="lazy" />
+    </div>
+
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-card-label">Address</div>
+        <div class="info-card-value">Batheaston House<br>Batheaston, Bath, Somerset</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Check-in / out</div>
+        <div class="info-card-value">Thu 16 July, 15:00<br>Mon 20 July, 10:00</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Listing</div>
+        <div class="info-card-value">
+          <a href="https://www.batheastonhouse.com/" target="_blank" rel="noopener">batheastonhouse.com</a><br>
+          <a href="https://www.airbnb.com/rooms/1451446923719791252" target="_blank" rel="noopener">Airbnb listing</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Parking</div>
+        <div class="info-card-value">Coach house &amp; courtyard<br><small style="color:var(--text-muted)">Via A46 / M4</small></div>
+      </div>
+    </div>
+
+    <div class="highlights">
+      <span class="highlight-pill">Grade II* Listed · 1712</span>
+      <span class="highlight-pill">River Avon frontage</span>
+      <span class="highlight-pill">Hot tub</span>
+      <span class="highlight-pill">12-seat private cinema</span>
+      <span class="highlight-pill">Hidden bookcase kitchen</span>
+      <span class="highlight-pill">Sleeps 12</span>
+      <span class="highlight-pill">6 bedrooms</span>
+    </div>
+
+    <div class="map-frame">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-2.3582%2C51.3876%2C-2.3082%2C51.4076&layer=mapnik&marker=51.3966%2C-2.3332"
+        allowfullscreen loading="lazy"
+        style="border:none">
+      </iframe>
+      <div style="text-align:right;padding:0.4rem 0.8rem;font-family:Arial,sans-serif;font-size:0.75rem;">
+        <a href="https://www.openstreetmap.org/?mlat=51.3966&mlon=-2.3332#map=15/51.3966/-2.3332" target="_blank" rel="noopener" style="color:var(--text-muted)">View larger map</a>
+      </div>
+    </div>
+
+    <div class="getting-there">
+      <div class="travel-card">
+        <div class="travel-card-icon">✈️</div>
+        <div class="travel-card-title">Bristol Airport</div>
+        <div class="travel-card-desc">~30 min drive via A37 / A4. Taxi or hire car recommended.</div>
+      </div>
+      <div class="travel-card">
+        <div class="travel-card-icon">🚂</div>
+        <div class="travel-card-title">Bristol Temple Meads</div>
+        <div class="travel-card-desc">~20 min taxi. Train from Bath Spa ~12 min.</div>
+      </div>
+      <div class="travel-card">
+        <div class="travel-card-icon">🚗</div>
+        <div class="travel-card-title">By Car</div>
+        <div class="travel-card-desc">Via A46 off the M4 (J18). Coach house &amp; courtyard parking on site.</div>
+      </div>
+      <div class="travel-card">
+        <div class="travel-card-icon">🏙️</div>
+        <div class="travel-card-title">Bath City Centre</div>
+        <div class="travel-card-desc">3 miles east. Taxi ~10 min, or bus from Batheaston village.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARRIVALS -->
+  <section id="arrivals">
+    <h2 class="section-title">Arrivals — Thursday 16 July</h2>
+    <div class="arrivals-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Who</th>
+            <th>Mode</th>
+            <th>From</th>
+            <th>Arriving</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Maeve, Dan, Lukas &amp; Donagh</td>
+            <td><span class="mode-badge mode-plane">✈ Plane</span></td>
+            <td>Bristol Airport</td>
+            <td class="arrive-time">14:30</td>
+            <td>Land 14:30 → transfer to house</td>
+          </tr>
+          <tr>
+            <td>Niall &amp; Diana</td>
+            <td><span class="mode-badge mode-plane">✈ Plane</span></td>
+            <td>Bristol Airport</td>
+            <td class="arrive-time">14:30</td>
+            <td>Same flight window as Maeve &amp; Dan</td>
+          </tr>
+          <tr>
+            <td>Phelim, Rosie, Aoife &amp; Finn</td>
+            <td><span class="mode-badge mode-car">🚗 Car</span></td>
+            <td>—</td>
+            <td class="arrive-time">~16:00</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Colin &amp; Mary</td>
+            <td><span class="mode-badge mode-plane">✈ Plane</span></td>
+            <td>Bristol Airport</td>
+            <td class="arrive-time">~20:00</td>
+            <td>Later flight</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section id="schedule">
+    <h2 class="section-title">Schedule</h2>
+    <div class="days">
+
+      <!-- Thursday -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name">Thursday — Arrival Day</span>
+          <span class="day-date">16 July</span>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <span class="event-time">15:00</span>
+            <div class="event-body">
+              <div class="event-title">Check-in at Batheaston House <span class="badge badge-confirmed">Confirmed</span></div>
+            </div>
+          </div>
+          <div class="event">
+            <span class="event-time">17:00–18:30</span>
+            <div class="event-body">
+              <div class="event-title">Dinner — Il Mulino Restaurant &amp; Bar <span class="badge badge-confirmed">Confirmed</span></div>
+              <div class="event-note">Upscale riverside Italian. Walk or short taxi from the house.</div>
+            </div>
+          </div>
+          <div class="event">
+            <span class="event-time">19:00</span>
+            <div class="event-body">
+              <div class="event-title">Return to house — kids' bedtime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Friday -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name">Friday — Bath &amp; Aoife's Birthday 🎂</span>
+          <span class="day-date">17 July</span>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <span class="event-time">10:00–12:00</span>
+            <div class="event-body">
+              <div class="event-title">Morning trip into Bath <span class="badge badge-tbc">TBC</span></div>
+              <div class="event-note">Explore the city — Roman Baths, Pulteney Bridge, shopping.</div>
+            </div>
+          </div>
+          <div class="event">
+            <span class="event-time">12:00–15:00</span>
+            <div class="event-body">
+              <div class="event-title">Lunch &amp; naps at the house</div>
+            </div>
+          </div>
+          <div class="event">
+            <span class="event-time">15:30–17:30</span>
+            <div class="event-body">
+              <div class="event-title">Royal Victoria Park <span class="badge badge-birthday">🎈 Aoife's 2nd Birthday</span></div>
+              <div class="event-note">Cake, picnic, and play in the park.</div>
+            </div>
+          </div>
+          <div class="event">
+            <span class="event-time">18:00</span>
+            <div class="event-body">
+              <div class="event-title">Casual self-catered dinner at the house</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Saturday -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name">Saturday — Brunch &amp; Birthday Dinner 🎂</span>
+          <span class="day-date">18 July</span>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <span class="event-time">09:00</span>
+            <div class="event-body">
+              <div class="event-title">Brunch — Gather Cafe <span class="badge badge-confirmed">Confirmed</span></div>
+            </div>
+          </div>
+          <div class="event">
+            <span class="event-time">Afternoon</span>
+            <div class="event-body">
+              <div class="event-title">Afternoon activity — choose one: <span class="badge badge-tbc">TBC</span></div>
+              <div class="event-note">
+                <strong>Option A:</strong> Afternoon High Tea at The Pump Room<br>
+                <strong>Option B:</strong> Thermae Bath Spa
+              </div>
+            </div>
+          </div>
+          <div class="event">
+            <span class="event-time">19:00</span>
+            <div class="event-body">
+              <div class="event-title">Private Chef dinner at the house <span class="badge badge-birthday">🎂 Niall &amp; Colin's Birthday</span></div>
+              <div class="event-note">Black tie optional. Expect something special.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sunday -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name">Sunday</span>
+          <span class="day-date">19 July</span>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <span class="event-time">Lunch</span>
+            <div class="event-body">
+              <div class="event-title">The Bathampton Mill <span class="badge badge-confirmed">Confirmed</span></div>
+              <div class="event-note">Premium riverside gastro-pub terrace, just along the Avon.</div>
+            </div>
+          </div>
+          <div class="event">
+            <span class="event-time">Afternoon</span>
+            <div class="event-body">
+              <div class="event-title">Free time — house, hot tub, grounds</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monday -->
+      <div class="day-card">
+        <div class="day-header">
+          <span class="day-name">Monday — Departure</span>
+          <span class="day-date">20 July</span>
+        </div>
+        <div class="day-events">
+          <div class="event">
+            <span class="event-time">10:00</span>
+            <div class="event-body">
+              <div class="event-title">Checkout — Batheaston House</div>
+              <div class="event-note">Leave the house as you found it. Safe travels everyone!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DAY TRIPS -->
+  <section id="daytrips">
+    <h2 class="section-title">Day Trips &amp; Venues</h2>
+    <div class="trips-grid">
+      <div class="trip-card">
+        <div class="trip-card-title">Thermae Bath Spa</div>
+        <div class="trip-card-desc">Open-air rooftop pool with views over the city. Britain's only natural thermal spa. Book in advance.</div>
+        <span class="trip-status">Not booked</span>
+      </div>
+      <div class="trip-card">
+        <div class="trip-card-title">The Pump Room — Afternoon Tea</div>
+        <div class="trip-card-desc">Georgian splendour with live music, fine teas and sandwiches. Bath's most iconic experience.</div>
+        <span class="trip-status">Not booked</span>
+      </div>
+      <div class="trip-card">
+        <div class="trip-card-title">The Roman Baths</div>
+        <div class="trip-card-desc">One of the best-preserved Roman sites in the world, right in the city centre.</div>
+        <span class="trip-status">Not booked</span>
+      </div>
+      <div class="trip-card">
+        <div class="trip-card-title">Bird of Prey Project</div>
+        <div class="trip-card-desc">Falconry experience — great for kids and adults alike.</div>
+        <span class="trip-status">Not booked</span>
+      </div>
+      <div class="trip-card">
+        <div class="trip-card-title">The Hideout</div>
+        <div class="trip-card-desc">Escape room adventure. Good for the older kids and competitive adults.</div>
+        <span class="trip-status">Not booked</span>
+      </div>
+      <div class="trip-card">
+        <div class="trip-card-title">Dyrham Park (National Trust)</div>
+        <div class="trip-card-desc">15 min north via M4 J18. Ancient deer park and a 17th-century mansion. Stunning grounds, great for a morning stroll.</div>
+        <span class="trip-status">Not booked</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOPPING LIST -->
+  <section id="shopping">
+    <h2 class="section-title">Shopping List</h2>
+    <div id="shop-setup-notice" class="setup-notice" style="display:none">
+      <strong>Setup needed:</strong> To enable live syncing with Google Sheets, paste the Google Apps Script web app URL into this page.
+      Open <code>index.html</code>, find <code>const SCRIPT_URL = ''</code> near the top of the &lt;script&gt; section, and replace it with your deployed script URL.
+      See <code>README.md</code> for full setup instructions.
+    </div>
+    <p class="shop-status" id="shop-status">Loading shopping list…</p>
+    <div id="shopping-list-container"></div>
+    <div class="add-item-form" id="add-item-form" style="display:none">
+      <input type="text" id="new-item-name" placeholder="Add item…" />
+      <select id="new-item-category">
+        <option value="Food">Food</option>
+        <option value="Drinks">Drinks</option>
+        <option value="Kids">Kids</option>
+        <option value="Household">Household</option>
+        <option value="Other">Other</option>
+      </select>
+      <button class="btn-add" onclick="addItem()">Add</button>
+    </div>
+    <div id="sheet-link-container"></div>
+  </section>
+
+</main>
+
+<footer>
+  Bradley Family Reunion &amp; 30th Birthday &nbsp;·&nbsp; Batheaston House, Bath &nbsp;·&nbsp; July 2026
+</footer>
+
+<script>
+  // ── CONFIG ──────────────────────────────────────────────────────────────
+  // Paste your deployed Google Apps Script URL here after setup:
+  const SCRIPT_URL = '';
+  // ────────────────────────────────────────────────────────────────────────
+
+  // Countdown
+  function updateCountdown() {
+    const target = new Date('2026-07-16T15:00:00');
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML = '<span style="color:#fff;font-size:1.1rem">We\'re here! 🎉</span>';
+      return;
+    }
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('cd-days').textContent  = days;
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 30000);
+
+  // Shopping list
+  let items = [];
+
+  function setStatus(msg, isError) {
+    const el = document.getElementById('shop-status');
+    el.textContent = msg;
+    el.className = 'shop-status' + (isError ? ' error' : '');
+  }
+
+  async function loadList() {
+    if (!SCRIPT_URL) {
+      document.getElementById('shop-setup-notice').style.display = 'block';
+      setStatus('');
+      renderFallback();
+      return;
+    }
+    try {
+      setStatus('Syncing with Google Sheets…');
+      const res = await fetch(SCRIPT_URL + '?action=get');
+      const data = await res.json();
+      items = data.items || [];
+      setStatus('Last synced: ' + new Date().toLocaleTimeString());
+      renderList();
+      document.getElementById('add-item-form').style.display = 'flex';
+      if (data.sheetUrl) {
+        document.getElementById('sheet-link-container').innerHTML =
+          '<a class="shop-sheet-link" href="' + data.sheetUrl + '" target="_blank" rel="noopener">📊 Open Google Sheet directly</a>';
+      }
+    } catch(e) {
+      setStatus('Could not reach Google Sheets. Check script URL in README.', true);
+      renderFallback();
+    }
+  }
+
+  function renderFallback() {
+    // Default items when no script is connected
+    items = [
+      {id:'1', name:'Milk', category:'Food', checked:false, qty:''},
+      {id:'2', name:'Bread', category:'Food', checked:false, qty:''},
+      {id:'3', name:'Butter', category:'Food', checked:false, qty:''},
+      {id:'4', name:'Eggs', category:'Food', checked:false, qty:'2 dozen'},
+      {id:'5', name:'Coffee', category:'Drinks', checked:false, qty:''},
+      {id:'6', name:'Tea', category:'Drinks', checked:false, qty:''},
+      {id:'7', name:'Wine / prosecco', category:'Drinks', checked:false, qty:''},
+      {id:'8', name:'Beer / cider', category:'Drinks', checked:false, qty:''},
+      {id:'9', name:'Nappies (toddler)', category:'Kids', checked:false, qty:''},
+      {id:'10', name:'Wipes', category:'Kids', checked:false, qty:''},
+      {id:'11', name:'Bin bags', category:'Household', checked:false, qty:''},
+      {id:'12', name:'Washing up liquid', category:'Household', checked:false, qty:''},
+      {id:'13', name:'Aoife birthday cake', category:'Other', checked:false, qty:'🎂'},
+    ];
+    renderList();
+    document.getElementById('add-item-form').style.display = 'flex';
+    setStatus(SCRIPT_URL ? '' : 'Showing starter list — connect Google Sheets for live sync.');
+  }
+
+  function renderList() {
+    const container = document.getElementById('shopping-list-container');
+    const categories = [...new Set(items.map(i => i.category))];
+    container.innerHTML = categories.map(cat => {
+      const catItems = items.filter(i => i.category === cat);
+      return `<div class="shop-categories">
+        <div>
+          <div class="shop-category-title">${cat}</div>
+          <div class="shop-items">
+            ${catItems.map(item => `
+              <div class="shop-item${item.checked ? ' checked' : ''}" data-id="${item.id}">
+                <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleItem('${item.id}', this.checked)" />
+                <span class="shop-item-name">${escHtml(item.name)}</span>
+                ${item.qty ? `<span class="shop-item-qty">${escHtml(item.qty)}</span>` : ''}
+                <button class="shop-item-del" onclick="deleteItem('${item.id}')" title="Remove">×</button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  async function toggleItem(id, checked) {
+    const item = items.find(i => i.id === id);
+    if (item) item.checked = checked;
+    renderList();
+    if (!SCRIPT_URL) return;
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({action: 'toggle', id, checked})
+      });
+      setStatus('Saved · ' + new Date().toLocaleTimeString());
+    } catch(e) { setStatus('Save failed — check connection', true); }
+  }
+
+  async function deleteItem(id) {
+    items = items.filter(i => i.id !== id);
+    renderList();
+    if (!SCRIPT_URL) return;
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({action: 'delete', id})
+      });
+      setStatus('Deleted · ' + new Date().toLocaleTimeString());
+    } catch(e) { setStatus('Delete failed — check connection', true); }
+  }
+
+  async function addItem() {
+    const nameEl = document.getElementById('new-item-name');
+    const catEl  = document.getElementById('new-item-category');
+    const name   = nameEl.value.trim();
+    if (!name) return;
+    const newItem = {
+      id: String(Date.now()),
+      name,
+      category: catEl.value,
+      checked: false,
+      qty: ''
+    };
+    items.push(newItem);
+    nameEl.value = '';
+    renderList();
+    if (!SCRIPT_URL) return;
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({action: 'add', name, category: catEl.value})
+      });
+      const data = await res.json();
+      if (data.id) newItem.id = data.id;
+      setStatus('Added · ' + new Date().toLocaleTimeString());
+    } catch(e) { setStatus('Add failed — check connection', true); }
+  }
+
+  document.getElementById('new-item-name').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addItem();
+  });
+
+  loadList();
+</script>
+
+</body>
+</html>
