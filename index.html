@@ -426,7 +426,6 @@
     <li><a href="#rooms">Rooms</a></li>
     <li><a href="#daytrips">Day Trips</a></li>
     <li><a href="#foodorder">Food Order</a></li>
-    <li><a href="#shopping">Shopping</a></li>
   </ul>
 </nav>
 
@@ -901,29 +900,6 @@
     </div>
   </section>
 
-  <!-- SHOPPING LIST -->
-  <section id="shopping">
-    <h2 class="section-title">Shopping List</h2>
-    <div id="shop-setup-notice" class="setup-notice" style="display:none">
-      <strong>Setup needed:</strong> To enable live syncing with Google Sheets, paste the Google Apps Script web app URL into this page.
-      Open <code>index.html</code>, find <code>const SCRIPT_URL = ''</code> near the top of the &lt;script&gt; section, and replace it with your deployed script URL.
-      See <code>README.md</code> for full setup instructions.
-    </div>
-    <p class="shop-status" id="shop-status">Loading shopping list…</p>
-    <div id="shopping-list-container"></div>
-    <div class="add-item-form" id="add-item-form" style="display:none">
-      <input type="text" id="new-item-name" placeholder="Add item…" />
-      <select id="new-item-category">
-        <option value="Food">Food</option>
-        <option value="Drinks">Drinks</option>
-        <option value="Kids">Kids</option>
-        <option value="Household">Household</option>
-        <option value="Other">Other</option>
-      </select>
-      <button class="btn-add" onclick="addItem()">Add</button>
-    </div>
-    <div id="sheet-link-container"></div>
-  </section>
 
 </main>
 
@@ -932,11 +908,6 @@
 </footer>
 
 <script>
-  // ── CONFIG ──────────────────────────────────────────────────────────────
-  // Paste your deployed Google Apps Script URL here after setup:
-  const SCRIPT_URL = '';
-  // ────────────────────────────────────────────────────────────────────────
-
   // Countdown
   function updateCountdown() {
     const target = new Date('2026-07-16T15:00:00');
@@ -956,155 +927,6 @@
   updateCountdown();
   setInterval(updateCountdown, 30000);
 
-  // Shopping list
-  let items = [];
-
-  function setStatus(msg, isError) {
-    const el = document.getElementById('shop-status');
-    el.textContent = msg;
-    el.className = 'shop-status' + (isError ? ' error' : '');
-  }
-
-  async function loadList() {
-    if (!SCRIPT_URL) {
-      document.getElementById('shop-setup-notice').style.display = 'block';
-      setStatus('');
-      renderFallback();
-      return;
-    }
-    try {
-      setStatus('Syncing with Google Sheets…');
-      const res = await fetch(SCRIPT_URL + '?action=get');
-      const data = await res.json();
-      items = data.items || [];
-      setStatus('Last synced: ' + new Date().toLocaleTimeString());
-      renderList();
-      document.getElementById('add-item-form').style.display = 'flex';
-      if (data.sheetUrl) {
-        document.getElementById('sheet-link-container').innerHTML =
-          '<a class="shop-sheet-link" href="' + data.sheetUrl + '" target="_blank" rel="noopener">📊 Open Google Sheet directly</a>';
-      }
-    } catch(e) {
-      setStatus('Could not reach Google Sheets. Check script URL in README.', true);
-      renderFallback();
-    }
-  }
-
-  function renderFallback() {
-    // Default items when no script is connected
-    items = [
-      {id:'1', name:'Milk', category:'Food', checked:false, qty:''},
-      {id:'2', name:'Bread', category:'Food', checked:false, qty:''},
-      {id:'3', name:'Butter', category:'Food', checked:false, qty:''},
-      {id:'4', name:'Eggs', category:'Food', checked:false, qty:'2 dozen'},
-      {id:'5', name:'Coffee', category:'Drinks', checked:false, qty:''},
-      {id:'6', name:'Tea', category:'Drinks', checked:false, qty:''},
-      {id:'7', name:'Wine / prosecco', category:'Drinks', checked:false, qty:''},
-      {id:'8', name:'Beer / cider', category:'Drinks', checked:false, qty:''},
-      {id:'9', name:'Nappies (toddler)', category:'Kids', checked:false, qty:''},
-      {id:'10', name:'Wipes', category:'Kids', checked:false, qty:''},
-      {id:'11', name:'Bin bags', category:'Household', checked:false, qty:''},
-      {id:'12', name:'Washing up liquid', category:'Household', checked:false, qty:''},
-      {id:'13', name:'Aoife birthday cake', category:'Other', checked:false, qty:'🎂'},
-      {id:'14', name:'Burgers', category:'Food', checked:false, qty:''},
-      {id:'15', name:'Sausages', category:'Food', checked:false, qty:''},
-      {id:'16', name:'Chicken / kebabs', category:'Food', checked:false, qty:''},
-      {id:'17', name:'Burger buns', category:'Food', checked:false, qty:''},
-      {id:'18', name:'Salads / sides', category:'Food', checked:false, qty:''},
-      {id:'19', name:'BBQ charcoal / gas', category:'Other', checked:false, qty:''},
-      {id:'20', name:'BBQ lighter / firelighters', category:'Other', checked:false, qty:''},
-    ];
-    renderList();
-    document.getElementById('add-item-form').style.display = 'flex';
-    setStatus(SCRIPT_URL ? '' : 'Showing starter list — connect Google Sheets for live sync.');
-  }
-
-  function renderList() {
-    const container = document.getElementById('shopping-list-container');
-    const categories = [...new Set(items.map(i => i.category))];
-    container.innerHTML = categories.map(cat => {
-      const catItems = items.filter(i => i.category === cat);
-      return `<div class="shop-categories">
-        <div>
-          <div class="shop-category-title">${cat}</div>
-          <div class="shop-items">
-            ${catItems.map(item => `
-              <div class="shop-item${item.checked ? ' checked' : ''}" data-id="${item.id}">
-                <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleItem('${item.id}', this.checked)" />
-                <span class="shop-item-name">${escHtml(item.name)}</span>
-                ${item.qty ? `<span class="shop-item-qty">${escHtml(item.qty)}</span>` : ''}
-                <button class="shop-item-del" onclick="deleteItem('${item.id}')" title="Remove">×</button>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      </div>`;
-    }).join('');
-  }
-
-  function escHtml(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
-  async function toggleItem(id, checked) {
-    const item = items.find(i => i.id === id);
-    if (item) item.checked = checked;
-    renderList();
-    if (!SCRIPT_URL) return;
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({action: 'toggle', id, checked})
-      });
-      setStatus('Saved · ' + new Date().toLocaleTimeString());
-    } catch(e) { setStatus('Save failed — check connection', true); }
-  }
-
-  async function deleteItem(id) {
-    items = items.filter(i => i.id !== id);
-    renderList();
-    if (!SCRIPT_URL) return;
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({action: 'delete', id})
-      });
-      setStatus('Deleted · ' + new Date().toLocaleTimeString());
-    } catch(e) { setStatus('Delete failed — check connection', true); }
-  }
-
-  async function addItem() {
-    const nameEl = document.getElementById('new-item-name');
-    const catEl  = document.getElementById('new-item-category');
-    const name   = nameEl.value.trim();
-    if (!name) return;
-    const newItem = {
-      id: String(Date.now()),
-      name,
-      category: catEl.value,
-      checked: false,
-      qty: ''
-    };
-    items.push(newItem);
-    nameEl.value = '';
-    renderList();
-    if (!SCRIPT_URL) return;
-    try {
-      const res = await fetch(SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({action: 'add', name, category: catEl.value})
-      });
-      const data = await res.json();
-      if (data.id) newItem.id = data.id;
-      setStatus('Added · ' + new Date().toLocaleTimeString());
-    } catch(e) { setStatus('Add failed — check connection', true); }
-  }
-
-  document.getElementById('new-item-name').addEventListener('keydown', e => {
-    if (e.key === 'Enter') addItem();
-  });
-
-  loadList();
 </script>
 
 </body>
