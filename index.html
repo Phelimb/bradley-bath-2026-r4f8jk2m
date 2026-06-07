@@ -282,6 +282,14 @@
       padding: 0.15rem 0.5rem; border-radius: 100px;
       margin-top: 0.4rem; background: #edf7ed; color: var(--green);
     }
+    .room-guests {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: var(--green); font-weight: 600;
+      margin-top: 0.45rem; display: flex; align-items: center; gap: 0.3rem;
+    }
+    .room-guests-label {
+      font-weight: 400; color: var(--text-muted); font-size: 0.72rem;
+    }
 
     .trips-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -726,6 +734,7 @@
         <div class="room-card">
           <div class="room-card-name">Courtyard Room</div>
           <div class="room-card-desc">Chaise-lounge &amp; courtyard access. Secret kitchen hidden behind bookcases — fridge, coffee maker, kettle, ovens, dishwasher.</div>
+          <div class="room-guests">🛏️ <span>Colin &amp; Mary</span></div>
         </div>
       </div>
     </div>
@@ -755,15 +764,18 @@
           <div class="room-card-name">Harrington Room</div>
           <div class="room-card-desc">En suite shower &amp; toilet.</div>
           <span class="room-badge">En suite</span>
+          <div class="room-guests">🛏️ <span>Phelim &amp; Rosie (+ Finn)</span></div>
         </div>
         <div class="room-card">
           <div class="room-card-name">Blanchard Room</div>
           <div class="room-card-desc">En suite toilet.</div>
           <span class="room-badge">En suite</span>
+          <div class="room-guests">🧸 <span>Aoife (2)</span></div>
         </div>
         <div class="room-card">
           <div class="room-card-name">Walters Room</div>
           <div class="room-card-desc">Double bed. Hidden sink. Shares the floor bathroom.</div>
+          <div class="room-guests">🛏️ <span>Niall &amp; Diana</span></div>
         </div>
         <div class="room-card">
           <div class="room-card-name">Shared Bathroom</div>
@@ -779,14 +791,17 @@
           <div class="room-card-name">Trecenan Room</div>
           <div class="room-card-desc">King-size bed. En suite bathroom with bath &amp; shower.</div>
           <span class="room-badge">En suite</span>
+          <div class="room-guests">🛏️ <span>Maeve &amp; Dan</span></div>
         </div>
         <div class="room-card">
           <div class="room-card-name">Pagden Room</div>
           <div class="room-card-desc">King-size bed. Shares the floor bathroom.</div>
+          <div class="room-guests">🧸 <span>Donagh (2)</span></div>
         </div>
         <div class="room-card">
           <div class="room-card-name">Marsh Room</div>
           <div class="room-card-desc">King-size bed. Shares the floor bathroom.</div>
+          <div class="room-guests">🧒 <span>Lukas (10)</span></div>
         </div>
         <div class="room-card">
           <div class="room-card-name">Shared Bathroom</div>
