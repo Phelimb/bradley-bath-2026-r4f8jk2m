@@ -393,6 +393,61 @@
       border-radius: 4px; font-size: 0.85em;
     }
 
+
+    /* ── PRIVATE DINING MENU ── */
+    .menu-intro {
+      font-family: 'Arial', sans-serif; font-size: 0.9rem;
+      color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;
+      font-style: italic;
+    }
+    .menu-tagline {
+      font-family: 'Georgia', serif; font-size: 0.88rem;
+      color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 1.5rem; display: block;
+    }
+    .menu-courses {
+      display: flex; flex-direction: column; gap: 0;
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+    }
+    .menu-course {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .menu-course:last-child { border-bottom: none; }
+    .menu-course-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 0.45rem;
+    }
+    .menu-course-name {
+      font-size: 1rem; color: var(--green);
+      letter-spacing: 0.02em;
+    }
+    .menu-course-tag {
+      font-family: 'Arial', sans-serif; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: #f6f0e4; color: var(--gold);
+      padding: 0.15rem 0.6rem; border-radius: 100px;
+      border: 1px solid var(--gold-light);
+      flex-shrink: 0; margin-left: 0.75rem;
+    }
+    .menu-course-desc {
+      font-family: 'Arial', sans-serif; font-size: 0.85rem;
+      color: var(--text-muted); line-height: 1.65;
+    }
+    .menu-course-note {
+      font-family: 'Georgia', serif; font-size: 0.82rem;
+      color: var(--gold); font-style: italic;
+      margin-top: 0.5rem;
+    }
+    .menu-divider-label {
+      background: var(--green); color: #fff;
+      padding: 0.7rem 1.5rem;
+      font-family: 'Georgia', serif; font-size: 0.88rem;
+      letter-spacing: 0.06em;
+    }
+
     /* ── FOOTER ── */
     footer {
       text-align: center; padding: 2rem 1.5rem;
@@ -423,6 +478,7 @@
     <li><a href="#property">Property</a></li>
     <li><a href="#arrivals">Arrivals</a></li>
     <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#menu">Dinner Menu</a></li>
     <li><a href="#rooms">Rooms</a></li>
     <li><a href="#daytrips">Day Trips</a></li>
     <li><a href="#foodorder">Food Order</a></li>
@@ -711,6 +767,73 @@
             </div>
           </div>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PRIVATE DINING MENU -->
+  <section id="menu">
+    <h2 class="section-title">Dinner Menu — Saturday 18 July</h2>
+    <span class="menu-tagline">2 &bull; 30 &bull; 70 &mdash; A Celebration of Bradley Generations</span>
+    <p class="menu-intro">Private chef dinner at the house &mdash; Niall &amp; Colin&rsquo;s birthday celebration. Five-course vegan tasting menu, fully included.</p>
+    <div class="menu-courses">
+
+      <div class="menu-course">
+        <div class="menu-course-header">
+          <span class="menu-course-name">Amuse-bouche</span>
+          <span class="menu-course-tag">Included</span>
+        </div>
+        <p class="menu-course-desc">
+          Tapioca pearl cracker, frijoles refritos mousse,<br>
+          Black garlic and cocoa ketchup, chili and lime dust
+        </p>
+      </div>
+
+      <div class="menu-course">
+        <div class="menu-course-header">
+          <span class="menu-course-name">Entr&eacute;e</span>
+          <span class="menu-course-tag">Included</span>
+        </div>
+        <p class="menu-course-desc">
+          Potato pav&eacute; infused with house curry blend, pea cream,<br>
+          Tamarind and carrot chutney, pickled shallot veils
+        </p>
+      </div>
+
+      <div class="menu-course">
+        <div class="menu-course-header">
+          <span class="menu-course-name">Main</span>
+          <span class="menu-course-tag">Included</span>
+        </div>
+        <p class="menu-course-desc">
+          Smoked tofu and courgette agnolotti, pea and coconut velouté<br>
+          Infused with thai herbs, rayu, tahini and yuzu drops
+        </p>
+      </div>
+
+      <div class="menu-course">
+        <div class="menu-course-header">
+          <span class="menu-course-name">Fourth Course</span>
+          <span class="menu-course-tag">Included</span>
+        </div>
+        <p class="menu-course-desc">
+          Charred aubergine medallion, calabrian fennel seed romesco,<br>
+          Confit ciliegino tomatoes, charred tropea onion petals,<br>
+          Chickpea and mediterranean herbs crumble, calabrian fig molasses
+        </p>
+        <p class="menu-course-note">Served with calabrian black anise milk bun</p>
+      </div>
+
+      <div class="menu-course">
+        <div class="menu-course-header">
+          <span class="menu-course-name">Dessert</span>
+          <span class="menu-course-tag">Included</span>
+        </div>
+        <p class="menu-course-desc">
+          Coconut (r)ice-cream, lime-macerated mango compote,<br>
+          Coconut and ginger biscotti crumble, mango and sesame veil
+        </p>
       </div>
 
     </div>
