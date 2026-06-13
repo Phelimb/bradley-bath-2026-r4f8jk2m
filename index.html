@@ -426,6 +426,21 @@
     }
 
 
+    /* ── STANDALONE MENU ── */
+    .menu-standalone {
+      display: flex; flex-direction: column; gap: 0;
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .menu-standalone-course {
+      padding: 1.2rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .menu-standalone-course:last-child { border-bottom: none; }
+    .menu-standalone-course .menu-course-label { margin-bottom: 0.3rem; }
+    .menu-standalone-course .menu-pairing { margin-top: 0.5rem; }
+
     .menu-divider-label {
       background: var(--green); color: #fff;
       padding: 0.7rem 1.5rem;
@@ -465,6 +480,7 @@
     <li><a href="#schedule">Schedule</a></li>
     <li><a href="#rooms">Rooms</a></li>
     <li><a href="#daytrips">Day Trips</a></li>
+    <li><a href="#menu">Menu</a></li>
     <li><a href="#foodorder">Food Order</a></li>
     <li><a href="house.html">House Guide</a></li>
   </ul>
@@ -725,58 +741,7 @@
             <span class="event-time">19:00</span>
             <div class="event-body">
               <div class="event-title">Private Chef dinner at the house <span class="badge badge-birthday">🎂 Niall &amp; Colin's Birthday</span></div>
-              <div class="chef-menu">
-                <div class="menu-course">
-                  <div class="menu-course-label">Amuse-bouche</div>
-                  <div class="menu-course-dish">Tapioca pearl cracker, frijoles refritos mousse, black garlic and cocoa ketchup, chili and lime dust</div>
-                  <div class="menu-pairing">
-                    <div>
-                      <div class="menu-pairing-wine">The Society's Celebration Crémant de Loire</div>
-                      <div class="menu-pairing-note">Crisp, traditional-method French bubbles to slice through the rich bean mousse and sharpen the palate against the smoky chili and lime dust.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="menu-course">
-                  <div class="menu-course-label">Entrée</div>
-                  <div class="menu-course-dish">Potato pave infused with house curry blend, pea cream, tamarind and carrot chutney, pickled shallot veils</div>
-                  <div class="menu-pairing">
-                    <div>
-                      <div class="menu-pairing-wine">The Society's Exhibition Chablis</div>
-                      <div class="menu-pairing-note">A bone-dry, razor-sharp mineral white. Its flinty green apple acidity effortlessly balances the warm, exotic spices of the curry-infused pave.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="menu-course">
-                  <div class="menu-course-label">Main</div>
-                  <div class="menu-course-dish">Smoked tofu and courgette agnolotti, pea and coconut velouté infused with thai herbs, rayu, tahini and yuzu drops</div>
-                  <div class="menu-pairing">
-                    <div>
-                      <div class="menu-pairing-wine">The Society's Exhibition Chablis</div>
-                      <div class="menu-pairing-note">The clean, flinty acidity acts as a refreshing palate cleanser against the rich tahini and coconut velouté, while letting the bright yuzu and Thai herbs pop.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="menu-course">
-                  <div class="menu-course-label">Fourth Course</div>
-                  <div class="menu-course-dish">Estate in Giardino: charred aubergine medallion, Calabrian fennel seed romesco, confit ciliegino tomatoes, charred tropea onion petals, chickpea and Mediterranean herbs crumble, Calabrian fig molasses — served with Calabrian black anise milk bun</div>
-                  <div class="menu-pairing">
-                    <div>
-                      <div class="menu-pairing-wine">Muga Prado Enea Gran Reserva</div>
-                      <div class="menu-pairing-note">A legendary, fully mature Rioja. Its velvety textures and complex layers of leather, spice, and deep fruit beautifully frame the smoky depth of the charred aubergine and sweet fig molasses.</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="menu-course">
-                  <div class="menu-course-label">Dessert</div>
-                  <div class="menu-course-dish">Coconut (r)ice-cream, lime-macerated mango compote, coconut and ginger biscotti crumble, mango and sesame veil</div>
-                  <div class="menu-pairing">
-                    <div>
-                      <div class="menu-pairing-wine">The Society's Exhibition Sauternes</div>
-                      <div class="menu-pairing-note">A luscious, honeyed apricot nectar. Its natural citrus lift balances the tropical, creamy elements of the dessert without being cloying.</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div class="event-note"><a href="#menu">View full menu &amp; wine pairings ↓</a></div>
             </div>
           </div>
         </div>
@@ -822,6 +787,64 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- CHEF MENU -->
+  <section id="menu">
+    <h2 class="section-title">Dinner Menu — Saturday 18 July</h2>
+    <p style="font-family:'Arial',sans-serif;font-size:0.85rem;color:var(--text-muted);margin-bottom:1.2rem;">Private chef dinner &middot; Niall &amp; Colin's birthday</p>
+    <div class="menu-standalone">
+      <div class="menu-standalone-course">
+        <div class="menu-course-label">Amuse-bouche</div>
+        <div class="menu-course-dish">Tapioca pearl cracker, frijoles refritos mousse, black garlic and cocoa ketchup, chili and lime dust</div>
+        <div class="menu-pairing">
+          <div>
+            <div class="menu-pairing-wine">The Society's Celebration Crémant de Loire</div>
+            <div class="menu-pairing-note">Crisp, traditional-method French bubbles to slice through the rich bean mousse and sharpen the palate against the smoky chili and lime dust.</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-standalone-course">
+        <div class="menu-course-label">Entrée</div>
+        <div class="menu-course-dish">Potato pave infused with house curry blend, pea cream, tamarind and carrot chutney, pickled shallot veils</div>
+        <div class="menu-pairing">
+          <div>
+            <div class="menu-pairing-wine">The Society's Exhibition Chablis</div>
+            <div class="menu-pairing-note">A bone-dry, razor-sharp mineral white. Its flinty green apple acidity effortlessly balances the warm, exotic spices of the curry-infused pave.</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-standalone-course">
+        <div class="menu-course-label">Main</div>
+        <div class="menu-course-dish">Smoked tofu and courgette agnolotti, pea and coconut velouté infused with Thai herbs, rayu, tahini and yuzu drops</div>
+        <div class="menu-pairing">
+          <div>
+            <div class="menu-pairing-wine">The Society's Exhibition Chablis</div>
+            <div class="menu-pairing-note">The clean, flinty acidity acts as a refreshing palate cleanser against the rich tahini and coconut velouté, while letting the bright yuzu and Thai herbs pop.</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-standalone-course">
+        <div class="menu-course-label">Fourth Course</div>
+        <div class="menu-course-dish">Estate in Giardino: charred aubergine medallion, Calabrian fennel seed romesco, confit ciliegino tomatoes, charred tropea onion petals, chickpea and Mediterranean herbs crumble, Calabrian fig molasses — served with Calabrian black anise milk bun</div>
+        <div class="menu-pairing">
+          <div>
+            <div class="menu-pairing-wine">Muga Prado Enea Gran Reserva</div>
+            <div class="menu-pairing-note">A legendary, fully mature Rioja. Its velvety textures and complex layers of leather, spice, and deep fruit beautifully frame the smoky depth of the charred aubergine and sweet fig molasses.</div>
+          </div>
+        </div>
+      </div>
+      <div class="menu-standalone-course">
+        <div class="menu-course-label">Dessert</div>
+        <div class="menu-course-dish">Coconut (r)ice-cream, lime-macerated mango compote, coconut and ginger biscotti crumble, mango and sesame veil</div>
+        <div class="menu-pairing">
+          <div>
+            <div class="menu-pairing-wine">The Society's Exhibition Sauternes</div>
+            <div class="menu-pairing-note">A luscious, honeyed apricot nectar. Its natural citrus lift balances the tropical, creamy elements of the dessert without being cloying.</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
