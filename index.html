@@ -249,6 +249,38 @@
     .badge-tbc       { background: #fff3cd; color: var(--tbc); }
     .badge-birthday  { background: #fce4ec; color: #b5365a; }
 
+    /* ── CHEF MENU ── */
+    .chef-menu {
+      margin-top: 0.9rem;
+      border-left: 2px solid var(--gold-light);
+      padding-left: 1rem;
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .menu-course-label {
+      font-family: 'Arial', sans-serif; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.1rem;
+    }
+    .menu-course-dish {
+      font-size: 0.9rem; color: var(--text); line-height: 1.5;
+    }
+    .menu-pairing {
+      margin-top: 0.35rem;
+      display: flex; gap: 0.5rem; align-items: flex-start;
+    }
+    .menu-pairing-wine {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      color: var(--green); font-weight: 600; white-space: nowrap;
+    }
+    .menu-pairing-note {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      color: var(--text-muted); line-height: 1.4;
+    }
+    .menu-pairing::before {
+      content: "🍷";
+      font-size: 0.75rem; flex-shrink: 0; margin-top: 0.05rem;
+    }
+
     /* ── DAY TRIPS ── */
     /* ── ROOMS ── */
     .floor {
@@ -724,6 +756,58 @@
             <span class="event-time">19:00</span>
             <div class="event-body">
               <div class="event-title">Private Chef dinner at the house <span class="badge badge-birthday">🎂 Niall &amp; Colin's Birthday</span></div>
+              <div class="chef-menu">
+                <div class="menu-course">
+                  <div class="menu-course-label">Amuse-bouche</div>
+                  <div class="menu-course-dish">Tapioca pearl cracker, frijoles refritos mousse, black garlic and cocoa ketchup, chili and lime dust</div>
+                  <div class="menu-pairing">
+                    <div>
+                      <div class="menu-pairing-wine">The Society's Celebration Crémant de Loire</div>
+                      <div class="menu-pairing-note">Crisp, traditional-method French bubbles to slice through the rich bean mousse and sharpen the palate against the smoky chili and lime dust.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="menu-course">
+                  <div class="menu-course-label">Entrée</div>
+                  <div class="menu-course-dish">Potato pave infused with house curry blend, pea cream, tamarind and carrot chutney, pickled shallot veils</div>
+                  <div class="menu-pairing">
+                    <div>
+                      <div class="menu-pairing-wine">The Society's Exhibition Chablis</div>
+                      <div class="menu-pairing-note">A bone-dry, razor-sharp mineral white. Its flinty green apple acidity effortlessly balances the warm, exotic spices of the curry-infused pave.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="menu-course">
+                  <div class="menu-course-label">Main</div>
+                  <div class="menu-course-dish">Smoked tofu and courgette agnolotti, pea and coconut velouté infused with thai herbs, rayu, tahini and yuzu drops</div>
+                  <div class="menu-pairing">
+                    <div>
+                      <div class="menu-pairing-wine">The Society's Exhibition Chablis</div>
+                      <div class="menu-pairing-note">The clean, flinty acidity acts as a refreshing palate cleanser against the rich tahini and coconut velouté, while letting the bright yuzu and Thai herbs pop.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="menu-course">
+                  <div class="menu-course-label">Fourth Course</div>
+                  <div class="menu-course-dish">Estate in Giardino: charred aubergine medallion, Calabrian fennel seed romesco, confit ciliegino tomatoes, charred tropea onion petals, chickpea and Mediterranean herbs crumble, Calabrian fig molasses — served with Calabrian black anise milk bun</div>
+                  <div class="menu-pairing">
+                    <div>
+                      <div class="menu-pairing-wine">Muga Prado Enea Gran Reserva</div>
+                      <div class="menu-pairing-note">A legendary, fully mature Rioja. Its velvety textures and complex layers of leather, spice, and deep fruit beautifully frame the smoky depth of the charred aubergine and sweet fig molasses.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="menu-course">
+                  <div class="menu-course-label">Dessert</div>
+                  <div class="menu-course-dish">Coconut (r)ice-cream, lime-macerated mango compote, coconut and ginger biscotti crumble, mango and sesame veil</div>
+                  <div class="menu-pairing">
+                    <div>
+                      <div class="menu-pairing-wine">The Society's Exhibition Sauternes</div>
+                      <div class="menu-pairing-note">A luscious, honeyed apricot nectar. Its natural citrus lift balances the tropical, creamy elements of the dessert without being cloying.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
