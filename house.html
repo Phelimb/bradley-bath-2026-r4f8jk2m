@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>House Guide — Batheaston House</title>
+  <style>
+    :root {
+      --cream: #faf7f2;
+      --warm-white: #ffffff;
+      --green: #3a5a40;
+      --green-light: #588157;
+      --green-muted: #a3b18a;
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --text: #2d2d2d;
+      --text-muted: #6b6b6b;
+      --border: #e0d8cc;
+      --confirmed: #3a5a40;
+      --tbc: #8a6d3b;
+      --radius: 12px;
+      --shadow: 0 2px 16px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--green); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.5rem;
+    }
+    nav ul {
+      display: flex; gap: 0; list-style: none;
+      max-width: 960px; margin: 0 auto;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    nav ul::-webkit-scrollbar { display: none; }
+    nav li a {
+      display: block; padding: 1rem 1.1rem;
+      font-family: 'Georgia', serif; font-size: 0.82rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      white-space: nowrap; border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav li a:hover { color: var(--green); border-color: var(--green); }
+    nav li a.active { color: var(--green); border-color: var(--green); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--green);
+      padding: 2.5rem 1.5rem 2rem;
+    }
+    .page-header-inner {
+      max-width: 960px; margin: 0 auto;
+    }
+    .page-header-back {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: rgba(255,255,255,0.65); text-decoration: none;
+      letter-spacing: 0.06em; display: inline-block; margin-bottom: 1rem;
+    }
+    .page-header-back:hover { color: rgba(255,255,255,0.9); }
+    .page-header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: normal; color: #fff; line-height: 1.2;
+    }
+    .page-header-sub {
+      color: rgba(255,255,255,0.7); font-family: 'Arial', sans-serif;
+      font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: 0.06em;
+    }
+
+    /* ── LAYOUT ── */
+    main { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+    section { margin-top: 3rem; }
+    .section-title {
+      font-size: 1.3rem; font-weight: normal;
+      color: var(--green); border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem; margin-bottom: 1.2rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── INFO CARDS ── */
+    .info-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin-bottom: 1.5rem;
+    }
+    .info-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem 1.2rem;
+    }
+    .info-card-label {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.35rem;
+    }
+    .info-card-value { font-size: 1rem; color: var(--text); }
+    .info-card a { text-decoration: none; }
+    .info-card a:hover { text-decoration: underline; }
+
+    /* ── CODE PILL (for codes/passwords) ── */
+    .code-pill {
+      display: inline-block;
+      background: var(--green); color: #fff;
+      font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: bold;
+      padding: 0.35rem 0.9rem; border-radius: 8px;
+      letter-spacing: 0.12em; margin-top: 0.3rem;
+    }
+    .code-label {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 0.8rem; margin-bottom: 0.2rem;
+    }
+
+    /* ── RULES LIST ── */
+    .rules-list {
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .rule-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.75rem 1rem;
+    }
+    .rule-num {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem; font-weight: bold;
+      color: var(--warm-white); background: var(--green);
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 0.05rem;
+    }
+    .rule-text { font-size: 0.95rem; line-height: 1.5; }
+    .rule-text strong { color: var(--green); }
+
+    /* ── PROSE SECTIONS ── */
+    .prose-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.4rem;
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      line-height: 1.7; color: var(--text);
+    }
+    .prose-card p + p { margin-top: 0.6rem; }
+    .prose-card strong { color: var(--green); }
+    .prose-card .note {
+      margin-top: 0.7rem; padding: 0.6rem 0.9rem;
+      background: #fff8e8; border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0; font-size: 0.82rem;
+      color: #6b5a2a;
+    }
+
+    /* ── APPLIANCES GRID ── */
+    .appliance-rooms {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .appliance-room {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.1rem;
+    }
+    .appliance-room-name {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.6rem;
+    }
+    .appliance-list {
+      list-style: none; display: flex; flex-direction: column; gap: 0.3rem;
+    }
+    .appliance-list li {
+      font-size: 0.88rem; color: var(--text);
+      padding-left: 1rem; position: relative;
+    }
+    .appliance-list li::before {
+      content: '·'; position: absolute; left: 0; color: var(--green-muted);
+    }
+
+    /* ── BINS ── */
+    .bins-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .bins-group {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1rem 1.1rem;
+    }
+    .bins-group-title {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 0.7rem;
+    }
+    .bin-item {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      margin-bottom: 0.5rem; font-size: 0.88rem;
+    }
+    .bin-swatch {
+      width: 14px; height: 14px; border-radius: 3px;
+      flex-shrink: 0; margin-top: 0.2rem; border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    /* ── LOCAL PLACES ── */
+    .places-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+    .place-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.9rem 1rem;
+      font-family: 'Arial', sans-serif;
+    }
+    .place-card-icon { font-size: 1.3rem; margin-bottom: 0.3rem; }
+    .place-card-name { font-size: 0.88rem; font-weight: bold; color: var(--text); }
+    .place-card-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; line-height: 1.4; }
+    .place-card-addr { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.35rem; }
+
+    /* ── THINGS TO DO ── */
+    .todo-section { margin-bottom: 1.5rem; }
+    .todo-section-title {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-muted); background: var(--green-light);
+      color: #fff; display: inline-block;
+      padding: 0.2rem 0.7rem; border-radius: 100px; margin-bottom: 0.8rem;
+    }
+    .todo-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.75rem;
+    }
+    .todo-card {
+      background: var(--warm-white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.9rem 1rem;
+    }
+    .todo-card-name { font-size: 0.95rem; color: var(--green); margin-bottom: 0.25rem; }
+    .todo-card-desc {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: var(--text-muted); line-height: 1.5;
+    }
+    .todo-card-link {
+      display: inline-block; margin-top: 0.4rem;
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      color: var(--green);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem 1.5rem;
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: var(--text-muted); border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .bins-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="index.html">Trip Planner</a></li>
+    <li><a href="index.html#property">Property</a></li>
+    <li><a href="index.html#arrivals">Arrivals</a></li>
+    <li><a href="index.html#schedule">Schedule</a></li>
+    <li><a href="index.html#rooms">Rooms</a></li>
+    <li><a href="index.html#daytrips">Day Trips</a></li>
+    <li><a href="house.html" class="active">House Guide</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <a href="index.html" class="page-header-back">← Back to trip planner</a>
+    <h1>House Guide</h1>
+    <p class="page-header-sub">Batheaston House &middot; 290 High Street, Batheaston, BA1 7RA</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- GETTING IN -->
+  <section id="getting-in">
+    <h2 class="section-title">Getting In</h2>
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="info-card-label">Key Handover</div>
+        <div class="info-card-value" style="font-size:0.9rem;">Keys handed to guests by host on arrival and returned on checkout. Access via the gate beside the main driveway gates.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Key Safe</div>
+        <div class="info-card-value" style="font-size:0.9rem;">Top key safe. Press the padlock button first, then enter code.</div>
+        <div class="code-label">Code</div>
+        <span class="code-pill">1742</span>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Alarm</div>
+        <div class="info-card-value" style="font-size:0.9rem;">Entry/intruder alarm. Two panels: by main front door and by side entrance. Always set alarm and close the gates when leaving the house unattended.</div>
+        <div class="code-label">Code</div>
+        <span class="code-pill">6623</span>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">WiFi</div>
+        <div class="info-card-value">
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.1rem;">Network</div>
+          <div style="font-weight:bold;">Batheaston House</div>
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem; margin-bottom:0.1rem;">Password</div>
+          <span class="code-pill" style="font-size:0.95rem;">B@theaston290</span>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Host</div>
+        <div class="info-card-value">
+          <a href="tel:07305220722">07305 220 722</a><br>
+          <a href="tel:07510212119">07510 212 119</a>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Annexe</div>
+        <div class="info-card-value" style="font-size:0.9rem;">There may be guests staying in the annexe. Please be mindful of access when parking and keep to the main house garden &amp; grounds.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOUSE RULES -->
+  <section id="rules">
+    <h2 class="section-title">House Rules</h2>
+    <div class="rules-list">
+      <div class="rule-item">
+        <div class="rule-num">1</div>
+        <div class="rule-text">No parties.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">2</div>
+        <div class="rule-text">No additional guests staying. Only the number that has been booked.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">3</div>
+        <div class="rule-text">No swapping guests in/out during the stay. The same guests for the duration please.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">4</div>
+        <div class="rule-text">No visitors.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">5</div>
+        <div class="rule-text">No loud music. No noise after 10pm. Please respect our neighbours.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">6</div>
+        <div class="rule-text">Please respect the village.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">7</div>
+        <div class="rule-text"><strong>Be very careful not to spill anything on the carpets.</strong> They cannot be cleaned. Previous guests had to pay £3,500 to replace stained carpets.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">8</div>
+        <div class="rule-text"><strong>No food or drinks to be taken upstairs into the bedrooms.</strong></div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">9</div>
+        <div class="rule-text">Please don't stick anything on the walls.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">10</div>
+        <div class="rule-text">Please ensure that gates to the property are closed when not in use.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">11</div>
+        <div class="rule-text">Always set the alarm when not in the house.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">12</div>
+        <div class="rule-text">Please use the black microfibre makeup removing cloths to remove makeup. Please don't stain white towels with makeup.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">13</div>
+        <div class="rule-text">Please follow the recycling instructions throughout your stay. All bins are clearly labelled.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">14</div>
+        <div class="rule-text">Please ensure that rubbish and recycling is correctly disposed of in the outside bin area. If it is not, it won't get taken away.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">15</div>
+        <div class="rule-text">Please take all unused food with you, or put in the food waste bins. Please don't chuck it all in the general waste bin upon checkout.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">16</div>
+        <div class="rule-text">Please treat everything in the house with care and respect. There are a lot of very expensive items in the house.</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-num">17</div>
+        <div class="rule-text">Please leave the house exactly as you found it. Everything in the correct place, with all plates, cutlery, glassware and cooking utensils put through the dishwasher and put back.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOT TUB -->
+  <section id="hot-tub">
+    <h2 class="section-title">Hot Tub</h2>
+    <div class="prose-card">
+      <p>The hot tub is eco-friendly, using <strong>no chemicals or electricity</strong>. It is heated by a wood burner attached to the tub — firewood and kindling are provided.</p>
+      <p>While heating, stir the water with the paddle to mix the hot water with the cold. <strong>Allow 90+ minutes</strong> for the water to reach temperature.</p>
+      <p>The water can be used for <strong>up to 3 days</strong>, after which it will need replacing.</p>
+    </div>
+  </section>
+
+  <!-- CINEMA -->
+  <section id="cinema">
+    <h2 class="section-title">Cinema</h2>
+    <div class="prose-card">
+      <p>To turn on the cinema screen and projector, press the <strong>green ON button on the top left</strong> of the large remote control, pointing it at the projector.</p>
+      <p>To turn it off, press the <strong>red OFF button on the top right</strong>. Volume is already set at an appropriate cinema level.</p>
+      <div class="note">Feel free to log into the Batheaston House streaming accounts — but please don't purchase anything using the house's account. Disney+ can be a bit slow sometimes.</div>
+    </div>
+  </section>
+
+  <!-- HEATING & FIREPLACES -->
+  <section id="heating">
+    <h2 class="section-title">Heating &amp; Fireplaces</h2>
+    <div class="prose-card">
+      <p>Heating and hot water will always be on. The radiators have <strong>wooden disc valves</strong> — turn <strong>anti-clockwise to turn on</strong>, clockwise to turn off.</p>
+      <p style="margin-top:0.8rem;"><strong>Operational fireplaces:</strong> Kitchen · Drawing Room · Dining Room</p>
+      <p>Firewood and kindling are provided. Please <strong>do not leave open fires unattended</strong>.</p>
+      <p style="margin-top:0.5rem; color:var(--text-muted); font-size:0.82rem;">All other fireplaces are sealed — please don't attempt to use them.</p>
+      <div class="note">The fire alarm panel is in the 'Housekeeping Cupboard' in the basement hall. Carbon monoxide detectors are in each room with a fireplace.</div>
+    </div>
+  </section>
+
+  <!-- KITCHEN APPLIANCES -->
+  <section id="kitchen">
+    <h2 class="section-title">Kitchen Appliances</h2>
+    <div class="appliance-rooms">
+      <div class="appliance-room">
+        <div class="appliance-room-name">Main Kitchen</div>
+        <ul class="appliance-list">
+          <li>Aga oven (electric)</li>
+          <li>Miele dishwasher</li>
+          <li>Miele full-length fridge</li>
+          <li>Miele full-length freezer</li>
+        </ul>
+      </div>
+      <div class="appliance-room">
+        <div class="appliance-room-name">Pantry</div>
+        <ul class="appliance-list">
+          <li>Miele oven &amp; grill</li>
+          <li>Microwave</li>
+          <li>Ninja air-fryer</li>
+          <li>Induction hob (4 zone)</li>
+          <li>Kettle &amp; toaster</li>
+          <li>Cafetiere &amp; Moka pot</li>
+        </ul>
+      </div>
+      <div class="appliance-room">
+        <div class="appliance-room-name">Garden Room Kitchen</div>
+        <ul class="appliance-list">
+          <li>Miele oven &amp; grill</li>
+          <li>Induction hob (4 zone)</li>
+          <li>DeLonghi espresso machine</li>
+          <li>Miele fridge freezer</li>
+          <li>Miele dishwasher</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:0.8rem; font-family:'Arial',sans-serif; font-size:0.82rem; color:var(--text-muted);">There is no washing machine available for guests.</p>
+  </section>
+
+  <!-- RECYCLING & BINS -->
+  <section id="bins">
+    <h2 class="section-title">Recycling &amp; Bins</h2>
+    <div class="bins-grid">
+      <div class="bins-group">
+        <div class="bins-group-title">Inside (kitchens &amp; pantry)</div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#4caf50;"></div>
+          <div><strong>Green bag</strong> — mixed recycling</div>
+        </div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#f5f5f5;"></div>
+          <div><strong>White bag</strong> — card</div>
+        </div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#333;"></div>
+          <div><strong>Black bag</strong> — remaining rubbish</div>
+        </div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#8d6e3f;"></div>
+          <div><strong>Counter caddie</strong> — food waste</div>
+        </div>
+      </div>
+      <div class="bins-group">
+        <div class="bins-group-title">Outside bin area (front right)</div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#2196f3;"></div>
+          <div><strong>Blue bag</strong> — card recycling</div>
+        </div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#66bb6a;"></div>
+          <div><strong>Green box</strong> — glass recycling</div>
+        </div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#81c784;"></div>
+          <div><strong>Green box</strong> — plastic &amp; tin/foil</div>
+        </div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#222;"></div>
+          <div><strong>Black wheelie bin</strong> — general rubbish</div>
+        </div>
+        <div class="bin-item">
+          <div class="bin-swatch" style="background:#444;"></div>
+          <div><strong>Small black bin</strong> — food waste</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section id="checkout">
+    <h2 class="section-title">Checkout — Monday 20 July, 10:00</h2>
+    <div class="prose-card">
+      <p>Please leave the house exactly as you found it:</p>
+      <ul style="margin-top:0.6rem; padding-left:1.2rem; display:flex; flex-direction:column; gap:0.4rem; font-size:0.9rem;">
+        <li>All plates, cutlery, glassware and cooking utensils put through the dishwasher and put back</li>
+        <li>Leave the keys on the kitchen table</li>
+        <li>Lock all doors and set the alarm before leaving</li>
+        <li>Take all unused food with you, or put in the food waste bins</li>
+        <li>Ensure rubbish and recycling is in the correct outside bins</li>
+        <li>Strip bedding of duvet covers, sheets and pillowcases if possible, and leave towels separately in one place (greatly appreciated, but not expected)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LOCAL ESSENTIALS -->
+  <section id="local">
+    <h2 class="section-title">Local Essentials</h2>
+    <div class="places-grid">
+      <div class="place-card">
+        <div class="place-card-icon">☕</div>
+        <div class="place-card-name">Gather Café</div>
+        <div class="place-card-desc">Fab breakfasts and lunches. Open 9am–3pm, Tuesday–Saturday.</div>
+        <div class="place-card-addr">229 London Road E, Batheaston, BA1 7NB</div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">🛒</div>
+        <div class="place-card-name">Premier Village Shop</div>
+        <div class="place-card-desc">Convenience store in the village.</div>
+        <div class="place-card-addr">219 London Road E, Batheaston, BA1 7NB</div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">🐟</div>
+        <div class="place-card-name">Robbie's Plaice</div>
+        <div class="place-card-desc">Village fish &amp; chips.</div>
+        <div class="place-card-addr">227 London Road E, Batheaston, BA1 7NB</div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">🍺</div>
+        <div class="place-card-name">Bathampton Mill</div>
+        <div class="place-card-desc">Nicest local pub — canalside setting.</div>
+        <div class="place-card-addr">Mill Lane, Bathampton, BA2 6TS</div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">🚕</div>
+        <div class="place-card-name">Veezu Taxis</div>
+        <div class="place-card-desc">Local taxi service for Bath.</div>
+        <div class="place-card-addr"><a href="https://www.veezu.co.uk/bath" target="_blank" rel="noopener">veezu.co.uk/bath</a></div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">🚌</div>
+        <div class="place-card-name">Bus</div>
+        <div class="place-card-desc">Nearest stop: Stambridge. Service into Bath city centre.</div>
+        <div class="place-card-addr"><a href="https://www.firstbus.co.uk" target="_blank" rel="noopener">firstbus.co.uk</a></div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">⚡</div>
+        <div class="place-card-name">EV Charging</div>
+        <div class="place-card-desc">Morrisons car park.</div>
+        <div class="place-card-addr">London Road, Bath, BA1 6AN</div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">⛽</div>
+        <div class="place-card-name">Petrol Station</div>
+        <div class="place-card-desc">Esso on London Road.</div>
+        <div class="place-card-addr">London Road, Bath, BA1 6AJ</div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">💊</div>
+        <div class="place-card-name">Pharmacy</div>
+        <div class="place-card-desc">Boots Batheaston.</div>
+        <div class="place-card-addr">201 London Road E, Batheaston, BA1 7NB</div>
+      </div>
+      <div class="place-card">
+        <div class="place-card-icon">🏥</div>
+        <div class="place-card-name">Nearest Hospital</div>
+        <div class="place-card-desc">Royal United Hospitals Bath.<br><a href="tel:01225428331">01225 428 331</a></div>
+        <div class="place-card-addr">BA1 3NG &mdash; <a href="https://www.ruh.nhs.uk" target="_blank" rel="noopener">ruh.nhs.uk</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THINGS TO DO -->
+  <section id="todo">
+    <h2 class="section-title">Things To Do in Bath</h2>
+
+    <div class="todo-section">
+      <div class="todo-section-title">Attractions</div>
+      <div class="todo-grid">
+        <div class="todo-card">
+          <div class="todo-card-name">The Roman Baths</div>
+          <div class="todo-card-desc">Amazingly well-preserved. Holograms, actors, artefacts from the Sulis Minerva temple — the most popular attraction in Bath.</div>
+          <a href="https://www.romanbaths.co.uk" target="_blank" rel="noopener" class="todo-card-link">romanbaths.co.uk</a>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Bath Abbey</div>
+          <div class="todo-card-desc">Twelve and a half centuries of history. Extraordinary ornate carvings including Jacob's Ladder. Tower tours available.</div>
+          <a href="https://www.bathabbey.org" target="_blank" rel="noopener" class="todo-card-link">bathabbey.org</a>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Royal Crescent</div>
+          <div class="todo-card-desc">Iconic curved row of 30 Grade I listed Georgian houses, designed by John Wood the Younger (1767–1774). UNESCO World Heritage Site.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Pulteney Bridge</div>
+          <div class="todo-card-desc">One of only four bridges in the world with shops across its full span on both sides. Designed by Robert Adam, 1769.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">The Canal Walk</div>
+          <div class="todo-card-desc">Serene walk past narrowboats, aqueduct and country pubs. A short drive from the house.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Bath Skyline Walk</div>
+          <div class="todo-card-desc">6 miles, 3–4 hours. Best views of Bath through meadows and ancient woodland above the city. Starts near the centre.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Botanical Gardens</div>
+          <div class="todo-card-desc">In Royal Victoria Park, formed 1887. Six acres of quiet parkland with a wide selection of flora.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="todo-section">
+      <div class="todo-section-title">Spas</div>
+      <div class="todo-grid">
+        <div class="todo-card">
+          <div class="todo-card-name">Thermae Bath Spa</div>
+          <div class="todo-card-desc">Natural thermal waters at the heart of the city. Rooftop pool with unforgettable views. Two-hour sessions, treatments and massages available.</div>
+          <a href="https://www.thermaebathspa.com" target="_blank" rel="noopener" class="todo-card-link">thermaebathspa.com</a>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Gainsborough Bath Spa</div>
+          <div class="todo-card-desc">Luxurious spa tapping Bath's original thermal waters. Circuit of natural thermal pools, saunas, steam rooms and ice alcove.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">The Bath House</div>
+          <div class="todo-card-desc">Within the Royal Crescent Hotel gardens. Japanese bath house theme with relaxation pool and treatments. Advance bookings essential.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="todo-section">
+      <div class="todo-section-title">Restaurants — Host Recommendations</div>
+      <div class="todo-grid">
+        <div class="todo-card">
+          <div class="todo-card-name">Chez Dominique ⭐</div>
+          <div class="todo-card-desc">Host's favourite. Real French bistro on Pulteney Bridge. Modern French bistro cuisine.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Pintxo de Bath ⭐</div>
+          <div class="todo-card-desc">Lively contemporary Spanish tapas restaurant. Another host favourite.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Olive Tree</div>
+          <div class="todo-card-desc">Michelin Star and 3 AA Rosette winner. "Refined, creative cooking using colours, textures and flavours to full effect."</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">The Mint Rooms</div>
+          <div class="todo-card-desc">Redefining Indian food with contemporary cooking style. Highly recommended.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Ponte Vecchio</div>
+          <div class="todo-card-desc">Italian by the river, offering the best view of the Abbey day and night.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Thai Balcony</div>
+          <div class="todo-card-desc">Next to the theatre, consistently great feedback.</div>
+        </div>
+        <div class="todo-card">
+          <div class="todo-card-name">Nourish</div>
+          <div class="todo-card-desc">Vegetarian and vegan restaurant on London Road, Larkhall. Plant-based dishes from international influences.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Bradley Family &mdash; Bath 2026 &middot; 16–20 July &middot; Batheaston House
+</footer>
+
+</body>
+</html>
